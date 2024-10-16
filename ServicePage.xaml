@@ -25,7 +25,6 @@
                         </Grid.RowDefinitions>
                         <Image Width="100" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Center">
                             <Image.Source>
-                                
                                 <Binding Path ="MainImagePath">
                                     <Binding.TargetNullValue>
                                         <ImageSource>
