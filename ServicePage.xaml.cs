@@ -28,7 +28,6 @@ namespace Battalov_avto
             var currentServices = Battalov_avtoserviesEntities.GetContext().Service.ToList();
                 //связать с листвью
             ServiceListView.ItemsSource = currentServices;
-            // добавали строки
 
             ComboType.SelectedIndex = 0;
 
