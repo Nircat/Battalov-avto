@@ -29,11 +29,91 @@ namespace Battalov_avto
                 //связать с листвью
             ServiceListView.ItemsSource = currentServices;
             // добавали строки
+
+            ComboType.SelectedIndex = 0;
+
+            UpdateServices();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new AddEditPage());
+        }
+
+        private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateServices();
+        }
+
+        private void TboxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateServices();
+        }
+
+        private void RButtonUp_Checked(object sender, RoutedEventArgs e)
+        {
+            UpdateServices();
+        }
+                
+        private void RButtonDown_Checked(object sender, RoutedEventArgs e)
+        {
+            UpdateServices();
+        }
+        private void UpdateServices()
+        {
+            var currentServices = Battalov_avtoserviesEntities.GetContext().Service.ToList();
+            switch (ComboType.SelectedIndex)
+            {
+                case 0:
+                    {
+                        currentServices = currentServices.Where(p => (Convert.ToInt32(p.Discount) >= 0 && Convert.ToInt32(p.Discount) <= 100)).ToList();
+                        break;
+                    }
+                case 1:
+                    {
+                        currentServices = currentServices.Where(p => (Convert.ToInt32(p.Discount) >= 0 && Convert.ToInt32(p.Discount) < 5)).ToList();
+                        break;
+                    }
+                case 2:
+                    {
+                        currentServices = currentServices.Where(p => (Convert.ToInt32(p.Discount) >= 5 && Convert.ToInt32(p.Discount) < 15)).ToList();
+                        break;
+                    }
+                case 3:
+                    {
+                        currentServices = currentServices.Where(p => (Convert.ToInt32(p.Discount) >= 15 && Convert.ToInt32(p.Discount) < 30)).ToList();
+                        break;
+                    }
+                case 4:
+                    {
+                        currentServices = currentServices.Where(p => (Convert.ToInt32(p.Discount) >= 30 && Convert.ToInt32(p.Discount) < 70)).ToList();
+                        break;
+                    }
+                case 5:
+                    {
+                        currentServices = currentServices.Where(p => (Convert.ToInt32(p.Discount) >= 70 && Convert.ToInt32(p.Discount) < 100)).ToList();
+                        break;
+                    }
+
+                default:
+                    MessageBox.Show("Почти получилось");
+                    break;
+            }
+
+            currentServices = currentServices.Where(p=>p.Title.ToLower().Contains(TboxSearch.Text.ToLower())).ToList();
+
+            ServiceListView.ItemsSource = currentServices.ToList();
+
+            if (RButtonDown.IsChecked.Value)
+            {
+                ServiceListView.ItemsSource = currentServices.OrderByDescending(p =>p.Cost).ToList();
+            }
+
+            if (RButtonUp.IsChecked.Value) 
+            {
+                ServiceListView.ItemsSource = currentServices.OrderBy(p => p.Cost).ToList();
+            }
+
         }
     }
 }
