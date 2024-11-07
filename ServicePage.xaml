@@ -14,19 +14,20 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
             
             <StackPanel Margin="10" Orientation="Horizontal">
                 
-                <TextBlock Text="Введиет название для поиска: " TextAlignment="Right" Width="300" FontSize ="20"></TextBlock>
+                <TextBlock Text="Введите название для поиска: " TextAlignment="Right" Width="300" FontSize ="20"></TextBlock>
                 <TextBox Name="TboxSearch" TextChanged="TboxSearch_TextChanged" Width="300" FontSize ="15"></TextBox>
 
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10">
-                <TextBlock Text="Выберите название для поиска: " TextAlignment="Right" Width="300" FontSize="20"></TextBlock>
+                <TextBlock Text="Выберите фильтр для поиска: " TextAlignment="Right" Width="300" FontSize="20"></TextBlock>
                 
                 <ComboBox Name="ComboType" SelectionChanged="ComboType_SelectionChanged" Width="300" FontSize="15">
                     <TextBlock>Все</TextBlock>
@@ -61,12 +62,13 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Image Width="100" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Center">
+                        
+                        <Image Width="200" Grid.RowSpan="4" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Center">
                             <Image.Source>
                                 <Binding Path ="MainImagePath">
                                     <Binding.TargetNullValue>
                                         <ImageSource>
-                                            Images/service_logo.png
+                                            Images/picture.png
                                         </ImageSource>
                                     </Binding.TargetNullValue>
                                 </Binding>
@@ -76,17 +78,30 @@
                         <TextBlock Text="{Binding Title}"  Grid.Column="1" Grid.Row ="0" HorizontalAlignment="Left" FontSize="20" TextWrapping ="Wrap"></TextBlock>
                         <TextBlock Text="{Binding Cost, StringFormat={}{0:0} рублей за}"     Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" FontSize="20"></TextBlock>
                         <TextBlock Text="{Binding Duration}" Grid.Column="1" Grid.Row ="1" HorizontalAlignment="Right" FontSize="20"></TextBlock>
-                        <TextBlock Text="{Binding Discount, StringFormat=*скидка {0} % }" Opacity="{Binding Discount}" Margin="5" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="16"></TextBlock>
+                        <TextBlock Text="{Binding DiscountInt, StringFormat=*скидка {0} % }" Opacity="{Binding DiscountInt}" Margin="5" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="16"></TextBlock>
 
                         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
                             <Button Name="EditButton" Content="редактировать" Margin="2" Click="EditButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>
-                            <Button Name="DeleteButton" Content="удалить" Margin="2" />
+                            <Button Name="DeleteButton" Content="удалить" Margin="2" Click="DeleteButton_Click" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Name="TBcount" FontSize="20" Height="20"></TextBlock>
+            <TextBlock Name="TBAllRecords" FontSize="20" Height="20"></TextBlock>
+            <Button Name="LeftDirButton" Content="$lt;" Width="20" Height="20" Click="LeftDirButton_Click"></Button>
+            <ListBox FontSize="20" Name="PageListBox" MouseUp="PageListBox_MouseUp">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <Button Name="RightDirButton" Content="&gt;" Width="20" Height="20" Click="RightDirButton_Click"></Button>
+        </StackPanel>
 
     </Grid>
     

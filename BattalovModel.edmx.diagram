@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e0e62ece253f41ae9bc4aec7fb0de78f" Name="Diagram1" ZoomLevel="75">
-        <EntityTypeShape EntityType="Battalov_avtoserviesModel.Client" Width="1.5" PointX="9" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Battalov_avtoserviesModel.ClientService" Width="1.5" PointX="7.875" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Battalov_avtoserviesModel.DocumentByService" Width="1.5" PointX="11.125" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Battalov_avtoserviesModel.Gender" Width="1.5" PointX="6.25" PointY="7.625" IsExpanded="true" />
+      <Diagram DiagramId="f28910d0ea1d4585911e5590b9de5060" Name="Diagram1">
+        <EntityTypeShape EntityType="Battalov_avtoserviesModel.Client" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Battalov_avtoserviesModel.ClientService" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Battalov_avtoserviesModel.DocumentByService" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Battalov_avtoserviesModel.Gender" Width="1.5" PointX="1.5" PointY="13.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Battalov_avtoserviesModel.Manufacturer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="Battalov_avtoserviesModel.Product" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Battalov_avtoserviesModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="Battalov_avtoserviesModel.ProductSale" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Battalov_avtoserviesModel.Service" Width="1.5" PointX="10.625" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Battalov_avtoserviesModel.ServicePhoto" Width="1.5" PointX="13" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Battalov_avtoserviesModel.Tag" Width="1.5" PointX="14" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Battalov_avtoserviesModel.Service" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Battalov_avtoserviesModel.ServicePhoto" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Battalov_avtoserviesModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Battalov_avtoserviesModel.Tag" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
         <AssociationConnector Association="Battalov_avtoserviesModel.FK_Client_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="Battalov_avtoserviesModel.FK_ClientService_Client" ManuallyRouted="false" >
-        </AssociationConnector>
+        <AssociationConnector Association="Battalov_avtoserviesModel.FK_ClientService_Client" ManuallyRouted="false" />
         <AssociationConnector Association="Battalov_avtoserviesModel.FK_ClientService_Service" ManuallyRouted="false" />
-        <AssociationConnector Association="Battalov_avtoserviesModel.FK_DocumentByService_ClientService" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="Battalov_avtoserviesModel.FK_DocumentByService_ClientService" ManuallyRouted="false" />
         <AssociationConnector Association="Battalov_avtoserviesModel.FK_ProductSale_ClientService" ManuallyRouted="false" />
         <AssociationConnector Association="Battalov_avtoserviesModel.FK_Product_Manufacturer" ManuallyRouted="false" />
         <AssociationConnector Association="Battalov_avtoserviesModel.FK_ProductPhoto_Product" ManuallyRouted="false" />

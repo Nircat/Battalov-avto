@@ -17,7 +17,6 @@ namespace Battalov_avto
     
     public partial class Battalov_avtoserviesEntities : DbContext
     {
-        // добавлено
         private static Battalov_avtoserviesEntities _context;
 
         public static Battalov_avtoserviesEntities GetContext()
@@ -26,8 +25,8 @@ namespace Battalov_avto
                 _context = new Battalov_avtoserviesEntities();
             return _context;
         }
-        //добавлено
-        public Battalov_avtoserviesEntities()
+
+            public Battalov_avtoserviesEntities()
             : base("name=Battalov_avtoserviesEntities")
         {
         }
@@ -47,6 +46,7 @@ namespace Battalov_avto
         public virtual DbSet<ProductSale> ProductSale { get; set; }
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServicePhoto> ServicePhoto { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
