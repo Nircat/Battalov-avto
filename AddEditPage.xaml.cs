@@ -40,10 +40,21 @@ namespace Battalov_avto
             if (_currentServise.Cost == 0)
                 errors.AppendLine("Укажите стоимость услуги");
 
-            if (string.IsNullOrWhiteSpace(_currentServise.Duration))
+            if (_currentServise.Duration == 0)
                 errors.AppendLine("Укажите длительность услуги");
 
-            if(errors.Length > 0)
+            if (_currentServise.Duration > 240)
+                errors.AppendLine("Длительность не может быть больше 240 минут");
+
+            if (_currentServise.Duration < 0)
+                errors.AppendLine("Длительность не может быть меньше 0");
+
+
+            if (_currentServise.Discount < 0 || _currentServise.Discount > 100)
+                errors.AppendLine("Укажите скидку от 0 до 100");
+
+
+            if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString());
                     return;
@@ -63,6 +74,26 @@ namespace Battalov_avto
             { 
                 MessageBox.Show(ex.Message.ToString());
             }
+            var allServices = Battalov_avtoserviesEntities.GetContext().Service.ToList();
+            allServices = allServices.Where(p => p.Title == _currentServise.Title).ToList();
+
+            if (allServices.Count == 0)
+            {
+                if (_currentServise.ID == 0)
+                    Battalov_avtoserviesEntities.GetContext().Service.Add(_currentServise);
+                try
+                {
+                    Battalov_avtoserviesEntities.GetContext().Service.Add(_currentServise);
+                    MessageBox.Show("Информация сохранена");
+                    Manager.MainFrame.GoBack();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+            else
+                MessageBox.Show("Уже существует такая услуга");
         }
     }
 }

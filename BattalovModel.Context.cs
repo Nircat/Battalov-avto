@@ -25,8 +25,7 @@ namespace Battalov_avto
                 _context = new Battalov_avtoserviesEntities();
             return _context;
         }
-
-            public Battalov_avtoserviesEntities()
+        public Battalov_avtoserviesEntities()
             : base("name=Battalov_avtoserviesEntities")
         {
         }
